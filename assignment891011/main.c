@@ -108,10 +108,90 @@ int assignment9(){ //Program that takes the student's scores on [n] amount of su
     return 0;
 }
 
-int assignment10(){
+int assignment10(){ //Program that can perform simple arithmetic operations on 2 numbers
+
+/*
+                    -- Terms --                         -- Reference --
+     1st Addend   +  2nd Addend  =     Sum      || ASCII val = 43 || score = 1
+       Minuend    -  Subtrahend  =  Difference  || ASCII val = 45 || score = 2
+    Multiplicand  *  Multiplier  =   Product    || ASCII val = 42 || score = 0
+      Dividend    /   Divisor    =   Quotient   || ASCII val = 47 || score = 3
+*/
+
+    char _operatorSymbol; //Stores user input for operator symbol
+    int _operatorConvert = 0; //Stores converted char ASCII into an int score to simplify values
+
+    //Stores pre-determined outputs depending on user inputs
+    char _1stTermArray[4][14] = {"Multiplicand", "1st Addend", "Minuend", "Dividend"};
+    char _2ndTermArray[4][12] = {"Multiplier", "2nd Addend", "Subtrahend", "Divisor"};
+
+    //Stores user input values to be calculated
+    double _1stTerm = 0;
+    double _2ndTerm = 0;
+    double _3rdTerm = 0;
+
     //UI text for readability
     printf("O=================(Assignment #10)=================O\n");
     printf("                 Simple  Calculator               \n");
+
+    //Asks for user input to determine choice of operator
+    printf("Select Operator {'+', '-', '*', '/'}\n   Operator: ");
+    scanf(" %c", &_operatorSymbol);
+
+    //Stores ASCII char value
+    _operatorConvert = (int)_operatorSymbol;
+
+    //Changes value stored in int _operatorConvert to a readable score
+    switch(_operatorConvert){
+        case 42: //Multiplication
+            _operatorConvert = 0;
+            break;
+
+        case 43: //Addition
+            _operatorConvert = 1;
+            break;
+
+        case 45: //Subtraction
+            _operatorConvert = 2;
+            break;
+
+        case 47: //Division
+            _operatorConvert = 3;
+            break;
+
+    }
+
+    //Asks for user input for the values to be calculated
+    printf("Insert the %s: ", _1stTermArray[_operatorConvert]);
+    scanf("%lf", &_1stTerm);
+    printf("Insert the %s: ", _2ndTermArray[_operatorConvert]);
+    scanf("%lf", &_2ndTerm);
+
+    //Selects the appropriate calculation depending on the int _operatorScore's value
+    switch(_operatorConvert){
+        case 0: //Multiplication
+            _3rdTerm = (_1stTerm * _2ndTerm);
+            break;
+
+        case 1: //Addition
+            _3rdTerm = (_1stTerm + _2ndTerm);
+            break;
+
+        case 2: //Subtraction
+            _3rdTerm = (_1stTerm - _2ndTerm);
+            break;
+
+        case 3: //Division
+            _3rdTerm = (_1stTerm / _2ndTerm);
+            break;
+
+    }
+
+    //Prints result for the user to see
+    printf("\nResult:\n   [%.2lf] [%c] [%.2lf] = [%.2lf]\n\n", _1stTerm, _operatorSymbol, _2ndTerm, _3rdTerm);
+
+    //For debugging purposes...
+    //printf("Debug:\n   _operatorConvert = [%d]\n\n", _operatorConvert);
 
     return 0;
 }
