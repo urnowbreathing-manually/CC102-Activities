@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define CLOSE 12 //Ends the program through int assignmentNum
 #define PI 3.14 //Value of PI
@@ -8,7 +7,7 @@ int assignmentNum = 0; //Helps navigate through program
 
 //All the minor functions
 int assignmentSelection(); //Assignment selection panel
-int assignment8();
+int assignment8(); //Time input detector; Sees if the user entered a valid time
 int assignment9(); //Program that takes the student's scores on [n] amount of subjects and gives an assessment
 int assignment10(); //Program that can perform simple arithmetic operations on 2 numbers
 int assignment11(); //Area calculator for some basic 2D shapes
@@ -52,14 +51,53 @@ int assignmentSelection(){//Function to help with navigation through the program
     return 0;
 }
 
-int assignment8(){
+int assignment8(){ //Time input detector; Sees if the user entered a valid time
+
+    int timeSelect = 0; //Stores user input time
+    int inputIdentifier = 1; //Checks to see if the input is out of bounds
+    char timeIndicator[3][4] = {"HH", "MM", "SS"}; //Pre-determined terms to display to the user
+
 
     //UI text for readability
     printf("O=================(Assignment #8)=================O\n");
     printf("                  Time   Settings                 \n");
     printf("Legend:\n   HH = Hours  ; 01HH =  60MM\n   MM = Minutes; 01MM =  60SS\n   SS = Seconds; 01SS = 100MS\n\n");
 
-    printf("Enter time in HH:MM:SS format: ");
+    //Loops an [n] amount of times until the user has filled all the needed values
+    printf("Enter time in HH:MM:SS format:\n");
+    for(int i = 0; i <= 2; i++){
+        //Asks for user input
+        printf("   Enter [%s]:", timeIndicator[i]);
+        scanf("%d", &timeSelect);
+
+        //Conditions to check if the inputs are out of bounds or not
+        if(inputIdentifier == 1){
+            switch(i){
+                case 0: //HH condition || min: 0, max: 23
+                    inputIdentifier = ((timeSelect > -1) && (timeSelect < 24)) ? 1 : 0;
+                    break;
+                case 1: //MM condition || min: 0, max: 59
+                    inputIdentifier = ((timeSelect > -1) && (timeSelect < 60)) ? 1 : 0;
+                    break;
+                case 2: //SS condition || min: 0, max: 59
+                    inputIdentifier = ((timeSelect > -1) && (timeSelect < 60)) ? 1 : 0;
+                    break;
+
+
+            }
+
+        }
+
+    }
+
+    //After loop ends, this conditional checks if the int inputIdentifier's value has been changed during the loop
+    if(inputIdentifier == 1){
+        printf("\nInput Time is Valid\n\n"); //No out of bounds input
+
+    }   else if(inputIdentifier == 0){
+            printf("\nInput Time is Invalid\n\n"); //Out of bounds input detected
+        }
+
 
     return 0;
 }
@@ -197,7 +235,7 @@ int assignment10(){ //Program that can perform simple arithmetic operations on 2
     return 0;
 }
 
-int assignment11(){ //Area calculator for some basic 2D shapes
+int assignment11(){ //Area calculator program for some basic 2D shapes
 
 /*
         -- Terms --         -- Reference --
