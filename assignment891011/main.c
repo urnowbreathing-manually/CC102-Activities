@@ -3,14 +3,15 @@
 #include <string.h>
 
 #define CLOSE 12 //Ends the program through int assignmentNum
+#define PI 3.14 //Value of PI
 int assignmentNum = 0; //Helps navigate through program
 
 //All the minor functions
 int assignmentSelection(); //Assignment selection panel
 int assignment8();
-int assignment9();
-int assignment10();
-int assignment11();
+int assignment9(); //Program that takes the student's scores on [n] amount of subjects and gives an assessment
+int assignment10(); //Program that can perform simple arithmetic operations on 2 numbers
+int assignment11(); //Area calculator for some basic 2D shapes
 
 int main(){ //Main Function; calls other functions in the program
     //Keeps the program looping
@@ -196,10 +197,114 @@ int assignment10(){ //Program that can perform simple arithmetic operations on 2
     return 0;
 }
 
-int assignment11(){
+int assignment11(){ //Area calculator for some basic 2D shapes
+
+/*
+        -- Terms --         -- Reference --
+    Square    = 'S' || ASCII val = 83  || score = 2
+    Rectangle = 'R' || ASCII val = 82  || score = 1
+    Triangle  = 'T' || ASCII val = 84  || score = 3
+    Circle    = 'C' || ASCII val = 67  || score = 0
+*/
+
+    char shapeSelector;
+    int shapeConvert = 0;
+
+    //char shapeStore[4][11] = {"Circle", "Rectangle", "Square", "Triangle"};
+
+    //Circle
+    double circleRadius = 0.0; //Radius of circle
+
+    //Rectangle
+    double rectangleLength = 0.0;
+    double rectangleWidth = 0.0;
+
+    //Square
+    double squareSideLength = 0.0;
+
+    //Triangle
+    double triangleBaseLength = 0.0;
+    double triangleHeight = 0.0;
+
+
     //UI text for readability
     printf("O=================(Assignment #11)=================O\n");
     printf("                   Area Calulator                \n");
+    printf("Formulas:\n   Area of a Square    = (sides ^ 2)\n   Area of a Rectangle = (Length * Width)\n   Area of a Triangle  = ((Base * Height) / 2\n   Area of Circle      = (PI * (circleRadius) ^ 2)\n\n");
+    printf("Legend:\n   Enter 'S' for [S]quare\n   Enter 'R' for [R]ectangle\n   Enter 'T' for [T]riangle\n   Enter 'C' for [C]ircle\n\n");
+
+    printf("Select shape to get the area of: ");
+    scanf(" %c", &shapeSelector);
+
+    shapeConvert = (int)shapeSelector;
+
+    //Changes value stored in int shapeConvert to a readable score
+    switch(shapeConvert){
+        case 67: //Circle
+            shapeConvert = 0;
+            break;
+
+        case 82: //Rectangle
+            shapeConvert = 1;
+            break;
+
+        case 83: //Square
+            shapeConvert = 2;
+            break;
+
+        case 84: //Triangle
+            shapeConvert = 3;
+            break;
+
+    }
+
+    //Conditional to switch between different formulas depending on user input
+    switch(shapeConvert){
+        case 0: //Circle
+            //Asks for user to input circle radius
+            printf("Insert Circle Radius: ");
+            scanf("%lf", &circleRadius);
+            printf("Selected Radius: [%.2lf]\n", circleRadius);
+
+            //Calculates Area of the circle and prints it for the user to see
+            printf("\nArea = [%.2lf square units]\n\n", PI * (circleRadius * circleRadius));
+            break;
+
+        case 1: //Rectangle
+            //Asks for user to input rectangle length and width
+            printf("Insert Rectangle Length: ");
+            scanf("%lf", &rectangleLength);
+            printf("Insert Rectangle Width: ");
+            scanf("%lf", &rectangleWidth);
+            printf("Selected Length and Width: [%.2lf], [%.2lf]\n", rectangleLength, rectangleWidth);
+
+            //Calculates Area of the rectangle and prints it for the user to see
+            printf("\nArea = [%.2lf square units]\n\n", rectangleLength * rectangleWidth);
+            break;
+
+        case 2: //Square
+            //Asks for user to input square side length
+            printf("Insert Square Side Length: ");
+            scanf("%lf", &squareSideLength);
+            printf("Selected Side Length: [%.2lf]\n", squareSideLength);
+
+            //Calculates Area of the square and prints it for the user to see
+            printf("\nArea = [%.2lf square units]\n\n", (squareSideLength * squareSideLength));
+            break;
+
+        case 3: //Triangle
+            //Asks for user to input triangle base length and height
+            printf("Insert Triangle Base Length: ");
+            scanf("%lf", &triangleBaseLength);
+            printf("Insert Triangle Height: ");
+            scanf("%lf", &triangleHeight);
+            printf("Selected Base Length and Height: [%.2lf], [%.2lf]\n", triangleBaseLength, triangleHeight);
+
+            //Calculates Area of the triangle and prints it for the user to see
+            printf("\nArea = [%.2lf square units]\n\n", (triangleBaseLength * triangleHeight) / 2);
+            break;
+
+    }
 
     return 0;
 }
