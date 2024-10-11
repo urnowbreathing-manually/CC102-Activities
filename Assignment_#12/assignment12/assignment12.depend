@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1728636987 source:c:\users\windows\documents\school\yr_1\1st_semester\cc102_computer_programming_i\assignment_#12\assignment12\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
