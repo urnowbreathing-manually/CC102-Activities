@@ -45,3 +45,12 @@ Program #8 - 11
     - Write a C program to calculate the area of a shape based on the shape type
       (1: Square, 2: Rectangle, 3: Triangle, 4: Circle) and the corresponding dimensions
       (length, width, radius) entered by the user.
+
+Program #12 - 13
+ - Program #12: Continue?
+    - Write a C program that will loop the program whenever the user enters a specific char
+      while terminating with another.
+
+ - Program #13: Login System
+    - Write a C program that asks the user for a specific string of text; a username and
+      password, then compares it with a the pre-defined string in the program.
