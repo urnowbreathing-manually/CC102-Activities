@@ -54,3 +54,8 @@ Program #12 - 13
  - Program #13: Login System
     - Write a C program that asks the user for a specific string of text; a username and
       password, then compares it with a the pre-defined string in the program.
+
+Program #14
+ - Program #14: ASCII Shape Visualizer
+    - Write a C program that will create an ASCII visualization from a selection of simple
+      2D shapes with user-defined size parameters.
